@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import { ProductCard } from "@/components/ProductCard";
+import { Product } from "@prisma/client"; import { ProductCard } from "@/components/ProductCard";
 
 export default async function Home() {
-  let featuredProducts = [];
+  let featuredProducts: Product[] = [];
   try {
     featuredProducts = await prisma.product.findMany({
       take: 4,
