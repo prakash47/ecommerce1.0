@@ -42,7 +42,7 @@ export function ProductCard({ product }: { product: Product }) {
            <span className="text-xs text-gray-500 ml-2">(4.5)</span>
         </div>
 
-        <Link href={/product/}>
+        <Link href={`/product/${product.id}`}>
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors line-clamp-1">
             {product.name}
           </h3>
