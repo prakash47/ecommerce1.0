@@ -14,7 +14,7 @@ export default function FilterSidebar({ className }: { className?: string }) {
   };
 
   return (
-    <aside className={w-64 flex-shrink-0 }>
+    <aside className={`w-64 flex-shrink-0 ${className}`}>
       <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 sticky top-24">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">Filters</h3>
 
@@ -58,7 +58,7 @@ export default function FilterSidebar({ className }: { className?: string }) {
             {["bg-red-500", "bg-blue-500", "bg-green-500", "bg-yellow-500", "bg-black", "bg-white border"].map((color) => (
               <button
                 key={color}
-                className={w-6 h-6 rounded-full  ring-2 ring-offset-2 ring-transparent hover:ring-gray-300 focus:outline-none}
+                className={`w-6 h-6 rounded-full ${color} ring-2 ring-offset-2 ring-transparent hover:ring-gray-300 focus:outline-none`}
               />
             ))}
           </div>
