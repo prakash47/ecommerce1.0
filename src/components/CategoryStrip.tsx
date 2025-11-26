@@ -27,7 +27,7 @@ export default async function CategoryStrip() {
             return (
               <Link
                 key={category.id}
-                href={/shop?category=}
+                href={`/shop?category=${category.name}`}
                 className="flex flex-col items-center min-w-[80px] group"
               >
                 <div className="w-16 h-16 rounded-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center mb-3 group-hover:bg-primary/10 group-hover:text-primary transition-colors border border-gray-100 dark:border-gray-700">

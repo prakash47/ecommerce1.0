@@ -89,7 +89,7 @@ export default async function AdminProductsPage() {
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <div className="flex justify-end space-x-3">
                     <Link
-                      href={/admin/products/}
+                      href={`/admin/products/${product.id}`}
                       className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300 p-1 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded transition-colors"
                     >
                       <Edit className="w-5 h-5" />
