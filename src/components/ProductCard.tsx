@@ -1,33 +1,65 @@
-import Link from "next/link";
 import Image from "next/image";
-
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-}
+import Link from "next/link";
+import { ShoppingCart, Star, Heart, Eye } from "lucide-react";
+import { Product } from "@prisma/client";
 
 export function ProductCard({ product }: { product: Product }) {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-      <div className="relative h-48 w-full">
+    <div className="group bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-800 relative">
+      {/* Image Container */}
+      <div className="relative h-64 overflow-hidden bg-gray-100 dark:bg-gray-800">
         <Image
           src={product.image}
           alt={product.name}
           fill
-          className="object-cover"
+          className="object-cover group-hover:scale-110 transition-transform duration-500"
         />
+        
+        {/* Overlay Actions */}
+        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
+           <button className="p-3 bg-white text-gray-900 rounded-full hover:bg-primary hover:text-white transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300 shadow-lg">
+             <Eye className="w-5 h-5" />
+           </button>
+           <button className="p-3 bg-white text-gray-900 rounded-full hover:bg-primary hover:text-white transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300 delay-75 shadow-lg">
+             <Heart className="w-5 h-5" />
+           </button>
+        </div>
+
+        {/* Badge (Optional) */}
+        <span className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+          SALE
+        </span>
       </div>
-      <div className="p-4">
-        <h3 className="text-lg font-semibold text-gray-800">{product.name}</h3>
-        <p className="text-gray-600 mt-1">${product.price.toFixed(2)}</p>
-        <Link
-          href={`/product/${product.id}`}
-          className="mt-4 block w-full bg-blue-600 text-white text-center py-2 rounded-md hover:bg-blue-700 transition-colors"
-        >
-          View Details
+
+      {/* Content */}
+      <div className="p-5">
+        <div className="flex items-center mb-2">
+           <div className="flex text-yellow-400">
+             {[...Array(5)].map((_, i) => (
+               <Star key={i} className="w-4 h-4 fill-current" />
+             ))}
+           </div>
+           <span className="text-xs text-gray-500 ml-2">(4.5)</span>
+        </div>
+
+        <Link href={/product/}>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors line-clamp-1">
+            {product.name}
+          </h3>
         </Link>
+        
+        <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 line-clamp-2">
+          {product.description}
+        </p>
+
+        <div className="flex items-center justify-between">
+          <span className="text-xl font-bold text-primary">
+            
+          </span>
+          <button className="p-2 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg hover:bg-primary hover:text-white transition-colors">
+            <ShoppingCart className="w-5 h-5" />
+          </button>
+        </div>
       </div>
     </div>
   );
